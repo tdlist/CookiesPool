@@ -5,6 +5,7 @@
 # @File    : geetest_click.py
 # @Software: PyCharm
 
+
 import time
 from PIL import Image
 from io import BytesIO

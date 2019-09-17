@@ -5,7 +5,6 @@
 # @File    : config.py
 # @Software: PyCharm
 
-
 # Redis 数据库链接
 REDIS_URL = 'redis://:************/2'
 

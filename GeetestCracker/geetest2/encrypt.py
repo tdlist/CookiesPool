@@ -5,6 +5,7 @@
 # @File    : encrypt.py
 # @Software: PyCharm
 
+
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad
 import binascii, json, os

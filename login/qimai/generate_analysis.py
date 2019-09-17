@@ -5,6 +5,7 @@
 # @File    : generate_analysis.py
 # @Software: PyCharm
 
+
 import execjs
 import time
 import random

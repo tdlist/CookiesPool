@@ -5,7 +5,6 @@
 # @File    : tester.py
 # @Software: PyCharm
 
-import json
 import requests
 import re
 import time
