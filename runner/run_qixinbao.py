@@ -5,10 +5,6 @@
 # @File    : run_qixinbao.py
 # @Software: PyCharm
 
-
-import sys
-sys.path.append('../../..')
-
 from scheduler import Scheduler
 
 

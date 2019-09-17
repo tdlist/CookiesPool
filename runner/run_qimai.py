@@ -5,9 +5,6 @@
 # @File    : run_qimai.py
 # @Software: PyCharm
 
-import sys
-sys.path.append('../../..')
-
 from scheduler import Scheduler
 
 
