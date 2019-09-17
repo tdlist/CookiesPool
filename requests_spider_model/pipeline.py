@@ -1,7 +1,7 @@
 
 from requests_spider_model.item import Item
-from common import utils
 import traceback
+from requests_spider_model import utils
 
 
 class MysqlPipeline:
@@ -17,7 +17,7 @@ class MysqlPipeline:
         """
         self.batch_size = batch_size
         self.item_dict = {}
-        self.conn = utils.get_local_conn(db='****')
+        self.conn = utils.get_local_conn('xxx')
 
     def write_to_db(self, table_name, items):
         """

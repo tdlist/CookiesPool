@@ -1,9 +1,7 @@
-
-import sys
-sys.path.append('../..')
-
 import requests
 import redis
+import pymongo
+import pymysql
 import functools
 import traceback
 import time
@@ -71,7 +69,7 @@ def loopUnlessSeccessOrMaxTry(max_times, sleep_time=1.5):
 def get_random_proxy(flag):
     while True:
         try:
-            r = requests.get('http://***********/random/')   # 代理池地址
+            r = requests.get('http://***********/random/')  # 代理池地址
             if flag == 'pyppeteer':
                 username = r.text.split('@')[0].split(':')[0]
                 password = r.text.split('@')[0].split(':')[1]
@@ -121,6 +119,181 @@ def md5_encrypt(encrypt_str):
     md5 = hashlib.md5()
     md5.update(encrypt_str.encode())
     return md5.hexdigest()
+
+
+def get_online_mongo_client():
+    """
+    连接线上 mongo 数据库
+    :param db:
+    :return:
+    """
+    client = pymongo.MongoClient(
+        host='ONLINE_MONGO_HOST',
+        port='ONLINE_MONGO_PORT'
+    )
+    # 先用admin数据库完成账号认证
+    db = client.admin
+    db.authenticate(name='MONGO_USER', password='MONGO_PASSWORD', mechanism='SCRAM-SHA-1')
+    return client
+
+
+def get_local_conn(db):
+    """
+    连接线上数据库
+    :param db:
+    :return:
+    """
+    conn = pymysql.connect(
+        host='LOCAL_DB_HOST',
+        user='LOCAL_DB_USER',
+        password='LOCAL_DB_PASSWORD',
+        port='LOCAL_DB_PORT',
+        db=db,
+    )
+    return conn
+
+
+def get_online_conn(db):
+    """
+    连接线上数据库
+    :param db:
+    :return:
+    """
+    conn = pymysql.connect(
+        host='ONLINE_DB_HOST',
+        user='ONLINE_DB_USER',
+        password='ONLINE_DB_PASSWORD',
+        port='ONLINE_DB_PORT',
+        db=db,
+    )
+    return conn
+
+
+def query_sql(sql, conn=None, db='xxx', online=True):
+    """
+    执行一条查询语句
+    :param sql:
+    :param conn:
+    :param db:
+    :return: 结果的字典列表
+    """
+    if not conn:
+        if online:
+            conn = get_online_conn(db)
+        else:
+            conn = get_local_conn(db)
+        close_db = True
+    else:
+        close_db = False
+    cursor = conn.cursor(pymysql.cursors.DictCursor)
+    cursor.execute(sql)
+    res = cursor.fetchall()
+    cursor.close()
+    if close_db:
+        conn.close()
+    return res
+
+
+def insert_db(sql, params=None, conn=None, db='lz_datastore', use_local=False):
+    """
+    执行一条查询语句
+    :param sql:
+    :param conn:
+    :param db:
+    :return: 影响的行数
+    """
+    if not conn:
+        if use_local:
+            conn = get_local_conn(db)
+        else:
+            conn = get_online_conn(db)
+        close_db = True
+    else:
+        close_db = False
+    cursor = conn.cursor()
+    try:
+        if params is None:
+            cursor.execute(sql)
+        else:
+            cursor.execute(sql, params)
+        conn.commit()
+    except Exception as e:
+        conn.rollback()
+        traceback.print_exc()
+    last_id = cursor.lastrowid
+    cursor.close()
+    if close_db:
+        conn.close()
+    return last_id
+
+
+def execute_sql(sql, params=None, conn=None, db='lz_datastore', use_local=False):
+    """
+    执行一条查询语句
+    :param sql:
+    :param params:
+    :param conn:
+    :param db:
+    :return: 影响的行数
+    """
+    if not conn:
+        if use_local:
+            conn = get_local_conn(db)
+        else:
+            conn = get_online_conn(db)
+        close_db = True
+    else:
+        close_db = False
+    cursor = conn.cursor()
+    try:
+        if params is None:
+            res = cursor.execute(sql)
+        else:
+            res = cursor.execute(sql, params)
+        conn.commit()
+    except Exception as e:
+        conn.rollback()
+        traceback.print_exc()
+        res = None
+    cursor.close()
+    if close_db:
+        conn.close()
+    return res
+
+
+def executemany_sql(sql, params, conn=None, db='lz_datastore', use_local=False):
+    """
+    执行多条查询语句
+    :param sql:
+    :param conn:
+    :param db:
+    :return: 影响的行数
+    """
+    if not conn:
+        if use_local:
+            conn = get_local_conn(db)
+        else:
+            conn = get_online_conn(db)
+        close_db = True
+    else:
+        close_db = False
+    cursor = conn.cursor()
+    try:
+        res = cursor.executemany(sql, params)
+        conn.commit()
+    except Exception as e:
+        conn.rollback()
+        res = None
+        traceback.print_exc()
+    cursor.close()
+    if close_db:
+        conn.close()
+    return res
+
+
+def get_dict_cursor(conn):
+    cursor = conn.cursor(pymysql.cursors.DictCursor)
+    return cursor
 
 
 if __name__ == '__main__':
