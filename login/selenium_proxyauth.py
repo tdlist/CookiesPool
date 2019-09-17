@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2019/8/25 13:37
-# @Author  : xuzhihai0723
+# @Author  : Esbiya
 # @Email   : 18829040039@163.com
 # @File    : selenium_proxyauth.py
 # @Software: PyCharm

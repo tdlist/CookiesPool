@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2019/8/30 13:25
-# @Author  : xuzhihai0723
+# @Author  : Esbiya
 # @Email   : 18829040039@163.com
 # @File    : zhipin_login.py
 # @Software: PyCharm
