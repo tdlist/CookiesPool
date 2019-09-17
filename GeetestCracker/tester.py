@@ -5,10 +5,6 @@
 # @File    : tester.py
 # @Software: PyCharm
 
-
-import sys
-sys.path.append('../../..')
-
 import requests
 import time
 import execjs

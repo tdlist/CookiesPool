@@ -5,9 +5,6 @@
 # @File    : importer.py
 # @Software: PyCharm
 
-import sys
-sys.path.append('..')
-sys.path.append('../..')
 import time
 from db import RedisClient
 

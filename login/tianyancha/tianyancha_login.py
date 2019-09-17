@@ -5,11 +5,6 @@
 # @File    : tianyancha_login.py
 # @Software: PyCharm
 
-import sys
-
-sys.path.append('..')
-sys.path.append('../..')
-
 import json
 import random
 import time
@@ -39,7 +34,7 @@ class TianyanchaLogin:
         }
         self.session.proxies.update(utils.get_random_proxy('requests: https'))
         # 验证码识别服务器
-        self.geetester = GeetestServer(version='2', address="***********", port=8778)
+        self.geetester = GeetestServer(version='2', address="127.0.0.1", port=8778)
 
     def _encrypt_pwd(self):
         """

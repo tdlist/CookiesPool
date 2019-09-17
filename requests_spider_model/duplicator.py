@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-# @File  : duplicator.py
-# @Author: AaronJny
-# @Date  : 2019/04/19
-# @Desc  :
-
 
 import time
 from requests_spider_model.http import Request

@@ -5,19 +5,16 @@
 # @File    : geetest.py
 # @Software: PyCharm
 
-import sys
-sys.path.append('../../..')
-
 import requests
 import json
 import time
 import random
 import os
 import re
-from spiders.requests_spider_model import utils
-from spiders.cookies_pool.GeetestCracker.geetest2 import trace
-from spiders.cookies_pool.GeetestCracker.geetest2.img_locate import ImgProcess
-from spiders.cookies_pool.GeetestCracker.geetest2.encrypt import Encrypter
+from requests_spider_model import utils
+from GeetestCracker.geetest2 import trace
+from GeetestCracker.geetest2.img_locate import ImgProcess
+from GeetestCracker.geetest2.encrypt import Encrypter
 
 
 def cal_userresponse(a, b):

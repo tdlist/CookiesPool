@@ -5,10 +5,6 @@
 # @File    : qixinbao_login.py
 # @Software: PyCharm
 
-import sys
-sys.path.append('..')
-sys.path.append('../..')
-
 import execjs
 import json
 import random
@@ -40,7 +36,7 @@ class QixinbaoLogin:
         self.codes = get_codes()
 
         # 验证码识别服务器
-        self.geetester = GeetestServer(version='3', address="**********", port=8778)
+        self.geetester = GeetestServer(version='3', address="127.0.0.1", port=8778)
 
     def _encrypt_pwd(self):
         """

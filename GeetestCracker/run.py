@@ -5,9 +5,6 @@
 # @File    : run.py
 # @Software: PyCharm
 
-import sys
-sys.path.append('../../..')
-
 import os
 import sys
 import toml

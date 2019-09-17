@@ -5,10 +5,6 @@
 # @File    : cracker2.py
 # @Software: PyCharm
 
-
-import sys
-sys.path.append('../../..')
-
 from GeetestCracker.geetest2 import geetest
 
 

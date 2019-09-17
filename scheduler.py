@@ -5,10 +5,6 @@
 # @File    : scheduler.py
 # @Software: PyCharm
 
-import sys
-sys.path.append('..')
-sys.path.append('../..')
-
 from multiprocessing import Process
 from api import app
 from tester import *

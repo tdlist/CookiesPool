@@ -5,9 +5,6 @@
 # @File    : qixinbao_register.py
 # @Software: PyCharm
 
-import sys
-sys.path.append('../..')
-
 import execjs
 import random
 import requests
@@ -40,7 +37,7 @@ class QixinbaoRegister:
         self.codes = get_codes()
 
         # 验证码识别服务器
-        self.geetester = GeetestServer('3', address="********", port=8778)
+        self.geetester = GeetestServer('3', address="127.0.0.1", port=8778)
 
     @staticmethod
     def get_random_password():

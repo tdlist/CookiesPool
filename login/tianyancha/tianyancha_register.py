@@ -5,12 +5,6 @@
 # @File    : tianyancha_register.py
 # @Software: PyCharm
 
-
-import sys
-
-sys.path.append('..')
-sys.path.append('../..')
-
 import hashlib
 import random
 import requests
@@ -43,7 +37,7 @@ class TianyanchaRegister:
         self.session.proxies.update(utils.get_random_proxy('requests: https'))
 
         # 验证码识别服务器
-        self.geetester = GeetestServer(version='2', address="*******", port=8778)
+        self.geetester = GeetestServer(version='2', address="127.0.0.1", port=8778)
 
     @staticmethod
     def get_random_password():

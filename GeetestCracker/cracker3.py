@@ -5,10 +5,6 @@
 # @File    : cracker3.py
 # @Software: PyCharm
 
-
-import sys
-sys.path.append('../../..')
-
 import base64
 import os
 import platform

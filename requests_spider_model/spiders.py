@@ -1,8 +1,3 @@
-# -*- coding: utf-8 -*-
-# @File  : spiders.py
-# @Author: AaronJny
-# @Date  : 2019/04/19
-# @Desc  :
 
 from gevent import monkey
 

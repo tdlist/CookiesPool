@@ -1,8 +1,3 @@
-# -*- coding: utf-8 -*-
-# @File  : item.py
-# @Author: AaronJny
-# @Date  : 2019/04/19
-# @Desc  :
 
 from collections import UserDict
 

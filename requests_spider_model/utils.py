@@ -1,11 +1,5 @@
-# -*- coding: utf-8 -*-
-# @File  : utils.py
-# @Author: AaronJny
-# @Date  : 2019/04/19
-# @Desc  :
 
 import sys
-sys.path.append('..')
 sys.path.append('../..')
 
 import requests

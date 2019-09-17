@@ -1,8 +1,3 @@
-# -*- coding: utf-8 -*-
-# @File  : queue.py
-# @Author: AaronJny
-# @Date  : 2019/04/19
-# @Desc  :
 
 from requests_spider_model.http import Request
 

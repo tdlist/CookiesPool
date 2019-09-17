@@ -5,9 +5,6 @@
 # @File    : api.py
 # @Software: PyCharm
 
-import sys
-sys.path.append('../../..')
-
 from gevent import monkey
 monkey.patch_all()
 

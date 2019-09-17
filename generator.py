@@ -5,9 +5,6 @@
 # @File    : qichacha_login.py
 # @Software: PyCharm
 
-import sys
-sys.path.append('..')
-sys.path.append('../..')
 import json
 import asyncio
 import time

@@ -5,9 +5,6 @@
 # @File    : qichacha_login.py
 # @Software: PyCharm
 
-import sys
-sys.path.append('../..')
-
 import asyncio
 import random
 import time

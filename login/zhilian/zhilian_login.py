@@ -29,7 +29,7 @@ class ZhilianLogin:
         }
 
         # 验证码识别服务器
-        self.geetester = GeetestServer('3', address="***********", port=8778)
+        self.geetester = GeetestServer('3', address="127.0.0.1", port=8778)
 
     def _init_cookies(self):
         """

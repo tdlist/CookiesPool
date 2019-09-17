@@ -5,9 +5,6 @@
 # @File    : db.py
 # @Software: PyCharm
 
-import sys
-sys.path.append('..')
-sys.path.append('../..')
 import random
 import json
 from redis import StrictRedis, ConnectionPool
