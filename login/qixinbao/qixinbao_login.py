@@ -29,9 +29,9 @@ class QixinbaoLogin:
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36',
             'X-Requested-With': 'XMLHttpRequest'
         }
-        self.session.proxies.update(utils.get_random_proxy('requests: https'))
+        # self.session.proxies.update(utils.get_random_proxy('requests: https'))
 
-        with open('../login/qixinbao/encrypt.js', 'rb') as f:
+        with open('encrypt.js', 'rb') as f:
             js = f.read().decode()
         self.ctx = execjs.compile(js)
         self.codes = get_codes()
@@ -70,6 +70,7 @@ class QixinbaoLogin:
         header_js = self._get_header_js(url, data)
         self.session.headers.update(header_js)
         result = self.session.post(url, data=json.dumps(data)).json()
+        # if result['status'] == 200:
         return result
 
     def _get_validate(self):
@@ -143,5 +144,5 @@ class QixinbaoLogin:
 
 
 if __name__ == '__main__':
-    x = QixinbaoLogin('**********', '**********').run()
+    x = QixinbaoLogin('13408468632', 'xuzhihai0723').run()
     print(x)

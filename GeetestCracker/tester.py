@@ -17,7 +17,7 @@ from GeetestCracker.server import GeetestServer
 
 class Tester:
 
-    def __init__(self, site, version, max_num=5, address="39.107.69.94"):
+    def __init__(self, site, version, max_num=5, address="127.0.0.1"):
         # 待检查站点
         self.site = site
         # 极验版本: 极验 2 / 极验 3

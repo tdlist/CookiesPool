@@ -225,7 +225,7 @@ def crack(gt, challenge, referer):
         "Referer": referer,
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36"
     }
-    session.proxies.update(utils.get_random_proxy('requests: https'))
+    # session.proxies.update(utils.get_random_proxy('requests: https'))
     initData = _get_php(gt, challenge, session)
     # 下载图片
     img_path = os.path.abspath('./Captcha')
