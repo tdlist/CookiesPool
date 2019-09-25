@@ -18,12 +18,15 @@ def get_codes():
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36',
     }
-    url = 'https://cache.qixin.com/pcweb/common.a89140e8.js'
-    resp = requests.get(url, headers=headers)
+    # 这个 js url 过段时间会换
+    resp = requests.get('https://www.qixin.com', headers=headers)
+    url = 'https:' + re.search('script src="(.*?common.*?js)"', resp.text, re.S).group(1)
+    # url = 'https://cache.qixin.com/pcweb/common.63c2bea8.js'
+    response = requests.get(url, headers=headers)
     codes = {}
     for i in range(20):
-        text = 'e\.default={' + str(i) + ':"(.*?)"}'
-        x = re.search(text, resp.text).group(1)
+        text = r'e\.default={' + str(i) + ':"(.*?)"}'
+        x = re.search(text, response.text).group(1)
         codes.setdefault(i, x)
     return codes
 
